@@ -61,10 +61,6 @@ Optional filters (all passed through WordPress’s `apply_filters`):
 
 The main bootstrap function is `omonschau_wh()` (returns the `Omonschau_WH_Plugin` singleton).
 
-## License
-
-Add a `LICENSE` file that matches how you distribute the plugin. Plugins hosted on WordPress.org are typically licensed under **GPL-2.0-or-later** to align with WordPress core.
-
 ## Author
 
 Oliver Monschau — [https://omonschau.de](https://omonschau.de)
