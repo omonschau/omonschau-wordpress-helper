@@ -14,6 +14,7 @@ final class Omonschau_WH_Plugin {
 	const FEATURE_DISABLE_COMMENTS = 'disable_comments';
 	const FEATURE_REDUCE_ADMIN     = 'reduce_admin';
 	const FEATURE_UTM_PERSIST      = 'utm_persist';
+	const FEATURE_AI_DISCLOSURE    = 'ai_disclosure';
 
 	/**
 	 * @var Omonschau_WH_Plugin|null
@@ -92,6 +93,11 @@ final class Omonschau_WH_Plugin {
 		if ( self::is_feature_enabled( self::FEATURE_UTM_PERSIST ) ) {
 			require_once OMONSCHAU_WH_PLUGIN_DIR . 'includes/features/class-feature-utm.php';
 			Omonschau_WH_Feature_Utm::instance()->register();
+		}
+
+		if ( self::is_feature_enabled( self::FEATURE_AI_DISCLOSURE ) ) {
+			require_once OMONSCHAU_WH_PLUGIN_DIR . 'includes/features/class-feature-ai-disclosure.php';
+			Omonschau_WH_Feature_Ai_Disclosure::instance()->register();
 		}
 	}
 }

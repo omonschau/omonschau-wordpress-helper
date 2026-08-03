@@ -75,6 +75,7 @@ final class Omonschau_WH_Settings_Page {
 			Omonschau_WH_Plugin::FEATURE_DISABLE_COMMENTS,
 			Omonschau_WH_Plugin::FEATURE_REDUCE_ADMIN,
 			Omonschau_WH_Plugin::FEATURE_UTM_PERSIST,
+			Omonschau_WH_Plugin::FEATURE_AI_DISCLOSURE,
 		);
 
 		$enabled = array();
@@ -146,6 +147,15 @@ final class Omonschau_WH_Settings_Page {
 										<?php esc_html_e( 'UTM-Parameter auf interne Links übernehmen (Frontend)', 'omonschau-wordpress-helper' ); ?>
 									</label>
 									<p class="description"><?php esc_html_e( 'Speichert beim ersten Besuch mit UTM-Parametern in der URL deren Werte und hängt sie an interne Links an (nur öffentliche Seiten, nicht wp-admin).', 'omonschau-wordpress-helper' ); ?></p>
+
+									<br />
+
+									<label>
+										<input type="checkbox" name="<?php echo esc_attr( OMONSCHAU_WH_OPTION_KEY ); ?>[enabled_features][]" value="<?php echo esc_attr( Omonschau_WH_Plugin::FEATURE_AI_DISCLOSURE ); ?>"
+											<?php checked( in_array( Omonschau_WH_Plugin::FEATURE_AI_DISCLOSURE, $enabled, true ) ); ?> />
+										<?php esc_html_e( 'KI-Kennzeichnung für Medien (EU AI Act)', 'omonschau-wordpress-helper' ); ?>
+									</label>
+									<p class="description"><?php esc_html_e( 'Fügt in der Mediathek ein KI-Status-Feld hinzu und zeigt im Frontend ein Badge bei KI-generierten oder KI-modifizierten Bildern.', 'omonschau-wordpress-helper' ); ?></p>
 								</fieldset>
 							</td>
 						</tr>

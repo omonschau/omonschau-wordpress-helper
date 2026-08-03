@@ -28,6 +28,7 @@ You can enable any combination of:
 | Kommentare, Pings und Trackbacks deaktivieren | `disable_comments` | Closes comments and pings, hides comment-related admin UI, blocks new submissions (including REST/XML-RPC ping flows where applicable). Existing comments in the database are not deleted. |
 | Admin-Ansicht reduzieren | `reduce_admin` | Removes selected dashboard widgets and some admin bar items for a calmer backend. |
 | UTM-Parameter auf interne Links übernehmen (Frontend) | `utm_persist` | Persists campaign parameters on first visit and appends them to internal links on the public site only (not in `wp-admin`). |
+| KI-Kennzeichnung für Medien (EU AI Act) | `ai_disclosure` | Adds an AI usage field in the media library and shows a frontend badge on images marked as AI-generated or AI-modified. |
 
 ## Features in detail
 
@@ -46,9 +47,20 @@ Removes the welcome panel and specific dashboard metaboxes (e.g. activity and Wo
 - Internal links are enriched server-side (`the_content`, widget text content, excerpt) and via a small footer script so navigation menus and similar markup also stay consistent.
 - Mailto, `tel:`, `javascript:`, and pure hash links are skipped.
 
+### AI media disclosure (EU AI Act)
+
+- **Media library field** on every attachment: *Kein KI-Einsatz* (default), *KI-generiert*, *KI-modifiziert*.
+- Existing media without saved meta is treated as *Kein KI-Einsatz* — no bulk migration on install.
+- **Frontend badge** (bottom-right, German full labels) on images only when status is *KI-generiert* or *KI-modifiziert*.
+- Covers standard WordPress image output (`wp_get_attachment_image`, featured images, block content) and **Beaver Builder** (photo module, background images, gallery/slider modules where attachment IDs are available).
+- Badges appear on the public site only, not in `wp-admin` or the page builder editor.
+- This feature supports transparency under the EU AI Act; it does not constitute legal advice.
+
 ## Privacy
 
 If **UTM persistence** is enabled, the plugin sets a first-party cookie on the site’s domain to remember campaign parameters. Describe this in your privacy policy and cookie banner where required (e.g. GDPR).
+
+**AI disclosure** does not set cookies or track users; it reads attachment metadata and renders labels on the frontend.
 
 ## Developer hooks
 
@@ -58,8 +70,21 @@ Optional filters (all passed through WordPress’s `apply_filters`):
 - `omonschau_wh_remove_dashboard_metaboxes` — list of dashboard metabox definitions to remove when **Admin-Ansicht reduzieren** is on.
 - `omonschau_wh_remove_admin_bar_nodes` — admin bar node IDs to remove (defaults are conservative).
 - `omonschau_wh_utm_cookie_lifetime` — cookie lifetime in seconds (default: 30 days).
+- `omonschau_wh_ai_disclosure_meta_key` — attachment meta key (default: `_omonschau_wh_ai_usage`).
+- `omonschau_wh_ai_disclosure_labels` — label map for `none`, `generated`, `modified`.
+- `omonschau_wh_ai_disclosure_show_badge` — `(bool $show, int $attachment_id, string $status)` to suppress a badge per image.
 
 The main bootstrap function is `omonschau_wh()` (returns the `Omonschau_WH_Plugin` singleton).
+
+## Changelog
+
+### 1.1.0
+
+- Add optional **AI media disclosure** feature (EU AI Act): media library field and frontend badges, including Beaver Builder support.
+
+### 1.0.0
+
+- Initial release: disable comments, reduce admin, UTM persistence.
 
 ## Author
 

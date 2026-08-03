@@ -1,0 +1,40 @@
+.omonschau-wh-ai-badge-wrap {
+	display: inline-block;
+	position: relative;
+	max-width: 100%;
+	line-height: 0;
+	vertical-align: middle;
+}
+
+.omonschau-wh-ai-badge-wrap > img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.omonschau-wh-ai-badge {
+	position: absolute;
+	bottom: 6px;
+	right: 6px;
+	z-index: 2;
+	display: inline-block;
+	padding: 3px 7px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.72);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.omonschau-wh-ai-badge--generated {
+	background: rgba(30, 30, 30, 0.78);
+}
+
+.omonschau-wh-ai-badge--modified {
+	background: rgba(45, 45, 55, 0.78);
+}

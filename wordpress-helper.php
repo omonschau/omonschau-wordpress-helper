@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: WordPress Helper
- * Description: Optional utilities: disable comments, simplify admin, persist UTM parameters on internal links.
- * Version: 1.0.0
+ * Description: Optional utilities: disable comments, simplify admin, persist UTM parameters, AI media disclosure (EU AI Act).
+ * Version: 1.1.0
  * Author: Oliver Monschau
  * Author URI: https://omonschau.de
  * Text Domain: omonschau-wordpress-helper
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OMONSCHAU_WH_VERSION', '1.0.0' );
+define( 'OMONSCHAU_WH_VERSION', '1.1.0' );
 define( 'OMONSCHAU_WH_PLUGIN_FILE', __FILE__ );
 define( 'OMONSCHAU_WH_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OMONSCHAU_WH_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
